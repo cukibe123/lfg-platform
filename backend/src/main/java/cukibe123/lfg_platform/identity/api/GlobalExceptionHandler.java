@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import cukibe123.lfg_platform.identity.app.DuplicateEmailException;
+import cukibe123.lfg_platform.identity.app.WrongCredentialsException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -19,4 +20,14 @@ public class GlobalExceptionHandler {
         problem.setDetail(ex.getMessage());
         return problem;
     }
+
+    @ExceptionHandler(WrongCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ProblemDetail handleWrongCredentials(WrongCredentialsException ex) {
+        ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.UNAUTHORIZED);
+        problem.setTitle("Wrong credentials");
+        problem.setDetail(ex.getMessage());
+        return problem;
+    }
+
 }
