@@ -16,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import cukibe123.lfg_platform.identity.app.exception.DuplicateEmailException;
 import cukibe123.lfg_platform.identity.domain.User;
 import cukibe123.lfg_platform.identity.domain.UserRepository;
 import cukibe123.lfg_platform.identity.infra.security.BcryptPasswordHasher;
@@ -61,7 +62,7 @@ class RegisterUserServiceTest {
         String email = "taken@example.com";
 
         when(hasher.hash("pw")).thenReturn("hashed");
-        when(userRepository.save(any(User.class))).thenThrow(new DuplicateEmailException(email));
+        when(userRepository.save(any(User.class))).thenThrow(new DuplicateEmailException());
 
         DuplicateEmailException ex = assertThrows(
             DuplicateEmailException.class,
