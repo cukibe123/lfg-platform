@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import cukibe123.lfg_platform.identity.app.DuplicateEmailException;
-import cukibe123.lfg_platform.identity.app.WrongCredentialsException;
+import cukibe123.lfg_platform.identity.app.exception.DuplicateEmailException;
+import cukibe123.lfg_platform.identity.app.exception.WrongCredentialsException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

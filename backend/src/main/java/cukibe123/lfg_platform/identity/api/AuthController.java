@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cukibe123.lfg_platform.identity.api.dto.LoginResponse;
 import cukibe123.lfg_platform.identity.api.dto.RegisterRequest;
 import cukibe123.lfg_platform.identity.api.dto.RegisterResponse;
 import cukibe123.lfg_platform.identity.app.RegisterUserService;
@@ -28,4 +29,11 @@ public class AuthController {
         RegisterResponse body = new RegisterResponse(user.getId(), user.getEmail(), user.getStatus().name());
         return ResponseEntity.status(HttpStatus.CREATED).body(body);
     }
+
+    //TODO: Need to implement
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login() {
+        return ResponseEntity.status(HttpStatus.CREATED).body(new LoginResponse("200"));
+    }  
+
 }
