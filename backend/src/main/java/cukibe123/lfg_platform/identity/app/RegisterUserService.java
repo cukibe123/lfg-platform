@@ -1,6 +1,8 @@
 package cukibe123.lfg_platform.identity.app;
 
 import org.springframework.stereotype.Service;
+
+import cukibe123.lfg_platform.identity.app.exception.DuplicateEmailException;
 import cukibe123.lfg_platform.identity.domain.User;
 import cukibe123.lfg_platform.identity.domain.UserRepository;
 import cukibe123.lfg_platform.identity.infra.security.BcryptPasswordHasher;
@@ -23,7 +25,7 @@ public class RegisterUserService {
         try {
             return userRepository.save(user);
         } catch (DuplicateEmailException ex) {
-            throw new DuplicateEmailException(email);
+            throw new DuplicateEmailException();
         }
     }
 }
