@@ -13,7 +13,7 @@ public class UserRepositoryJpaAdapter implements UserRepository {
 
     private final SpringDataUserRepository springData;
 
-    public UserRepositoryJpaAdapter(SpringDataUserRepository springData) {
+    UserRepositoryJpaAdapter(SpringDataUserRepository springData) {
         this.springData = springData;
     }
 
